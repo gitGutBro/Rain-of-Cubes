@@ -5,14 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class Cube : MonoBehaviour, IInPool
 {
-    public event Action<Cube> ReturnedInPool;
-
     private const float MinBackPoolDelay = 2.5f;
     private const float MaxBackPoolDelay = 5f;
 
     private Renderer _renderer;
     private bool _isColored;
 
+    public event Action<Cube> ReturnedInPool;
     private WaitForSecondsRealtime BackInPoolDelay => new(UnityEngine.Random.Range(MinBackPoolDelay, MaxBackPoolDelay));
 
     private void Awake() =>
