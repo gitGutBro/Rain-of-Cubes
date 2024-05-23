@@ -8,7 +8,7 @@ public class SpawnController : MonoBehaviour
     [Space]
     [SerializeField] private CubePoolController _cubePoolController;
 
-    private CubeSpawner[] _spawners;
+    private SpawnPoint[] _spawners;
 
     private int RandomSpawnerIndex => UnityEngine.Random.Range(0, _spawners.Length - 1);
 
@@ -21,7 +21,7 @@ public class SpawnController : MonoBehaviour
 
         while(enabled)
         {
-            CubeSpawner spawner = _spawners[RandomSpawnerIndex];
+            SpawnPoint spawner = _spawners[RandomSpawnerIndex];
             Cube cube = _cubePoolController.GetCube(spawner.transform.position);
             cube.ReturnedInPool += ReturnCube;
 
@@ -38,7 +38,7 @@ public class SpawnController : MonoBehaviour
     private void Init()
     {
         _cubePoolController.Init();
-        _spawners = GetComponentsInChildren<CubeSpawner>();
+        _spawners = GetComponentsInChildren<SpawnPoint>();
 
         StartCoroutine(StartSpawn());
     }
