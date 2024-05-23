@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class SpawnController : MonoBehaviour
+public class CubeSpawner : MonoBehaviour
 {
     [SerializeField][Range(0.2f, 10f)] private float _delayInSeconds;
     [Space]
